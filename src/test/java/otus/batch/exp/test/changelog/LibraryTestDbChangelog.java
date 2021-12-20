@@ -30,29 +30,29 @@ public class LibraryTestDbChangelog {
     public void insertValueInGenresDb(MongockTemplate template) {
         Genre genre1 = template.save(new Genre("1", "Fantasy"));
         Genre genre2 = template.save(new Genre("2", "Horror"));
-        Genre genre3 = template.save(new Genre("3", "Teaching"));;
+        Genre genre3 = template.save(new Genre("3", "Teaching"));
         genreList = Arrays.asList(genre1, genre2, genre3);
     }
 
     @ChangeSet(order = "003", id = "insertInAuthorsDb", author = "admin", runAlways = true)
     public void insertValueInAuthorsDb(MongockTemplate template) {
-        Author author1 = template.save(new Author("1","Stephen","King"));
-        Author author2 = template.save(new Author("2","Suzanne","Collins"));
+        Author author1 = template.save(new Author("1", "Suzanne", "Collins"));
+        Author author2 = template.save(new Author("2", "Stephen", "King"));
         authorList = Arrays.asList(author1, author2);
     }
 
     @ChangeSet(order = "004", id = "insertInBooksDb", author = "admin", runAlways = true)
     public void insertValueInBooksDb(MongockTemplate template) {
-        Book book1 = template.save(new Book("1","The Hunger Games", authorList.get(1), genreList.get(0)));
-        Book book2 = template.save(new Book("2","Pet Sematary", authorList.get(0), genreList.get(0)));
-        Book book3 = template.save(new Book("3","Shine", authorList.get(0), genreList.get(1)));
+        Book book1 = template.save(new Book("1", "The Hunger Games", authorList.get(0), genreList.get(0)));
+        Book book2 = template.save(new Book("2", "Pet Sematary", authorList.get(1), genreList.get(0)));
+        Book book3 = template.save(new Book("3", "Shine", authorList.get(1), genreList.get(1)));
         bookList = Arrays.asList(book1, book2, book3);
     }
 
     @ChangeSet(order = "005", id = "insertInCommentsDb", author = "admin", runAlways = true)
     public void insertValueInCommentsDb(MongockTemplate template) {
-        template.save(new Comment("1","Could not tear myself away", new Date(),bookList.get(0)));
-        template.save(new Comment("2","So the book is great", new Date(),bookList.get(1)));
-        template.save(new Comment("3","I was bored sometimes, but overall ok", new Date(),bookList.get(2)));
+        template.save(new Comment("1", "Could not tear myself away", new Date(), bookList.get(0)));
+        template.save(new Comment("2", "So the book is great", new Date(), bookList.get(1)));
+        template.save(new Comment("3", "I was bored sometimes, but overall ok", new Date(), bookList.get(2)));
     }
 }
