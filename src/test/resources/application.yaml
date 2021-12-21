@@ -1,0 +1,39 @@
+#logging:
+#  level:
+#    ROOT: ERROR
+
+spring:
+  data:
+    mongodb:
+      port: 0
+      database: test
+  main:
+    allow-circular-references: true
+
+  batch:
+      job:
+        enabled: false
+  shell:
+    interactive:
+      enabled: false
+      script: false
+  sql:
+    init:
+      mode: always
+
+
+
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+
+mongock:
+  runner-type: "ApplicationRunner" # default
+  #runner-type: "InitializingBean"
+  change-logs-scan-package:
+    - otus.batch.exp.test.changelog
+  mongo-db:
+    write-concern:
+      journal: false
+    read-concern: local
